@@ -15,13 +15,14 @@ internal class CharactersStoreFactory(
 ) {
 
     fun create(): CharactersStore =
-        object : CharactersStore, Store<CharactersStore.Intent, CharactersStore.State, Nothing> by storeFactory.create(
-            name = "CharactersStore",
-            initialState = CharactersStore.State(),
-            bootstrapper = BootstrapperImpl(),
-            executorFactory = ::ExecutorImpl,
-            reducer = ReducerImpl
-        ) {}
+        object : CharactersStore,
+            Store<CharactersStore.Intent, CharactersStore.State, Nothing> by storeFactory.create(
+                name = "CharactersStore",
+                initialState = CharactersStore.State(),
+                bootstrapper = BootstrapperImpl(),
+                executorFactory = ::ExecutorImpl,
+                reducer = ReducerImpl
+            ) {}
 
     private sealed interface Action {
         data object LoadCharacters : Action
@@ -39,15 +40,16 @@ internal class CharactersStoreFactory(
         }
     }
 
-    private inner class ExecutorImpl : CoroutineExecutor<CharactersStore.Intent, Action, CharactersStore.State, Msg, Nothing>() {
-        override fun executeIntent(intent: CharactersStore.Intent, getState: () -> CharactersStore.State) {
+    private inner class ExecutorImpl :
+        CoroutineExecutor<CharactersStore.Intent, Action, CharactersStore.State, Msg, Nothing>() {
+        override fun executeIntent(intent: CharactersStore.Intent) {
             when (intent) {
                 CharactersStore.Intent.LoadCharacters -> loadCharacters()
                 CharactersStore.Intent.Refresh -> loadCharacters()
             }
         }
 
-        override fun executeAction(action: Action, getState: () -> CharactersStore.State) {
+        override fun executeAction(action: Action) {
             when (action) {
                 Action.LoadCharacters -> loadCharacters()
             }
@@ -76,6 +78,7 @@ internal class CharactersStoreFactory(
                     isLoading = false,
                     isError = false
                 )
+
                 Msg.Error -> copy(isLoading = false, isError = true)
             }
     }

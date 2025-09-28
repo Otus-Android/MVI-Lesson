@@ -44,4 +44,8 @@ class Injector(private val context: Context) {
     fun provideFeature(): Feature {
         return Feature(charactersRepository = provideRepository())
     }
+
+    fun provideCharactersRepository(): CharactersRepositoryImpl {
+        return provideRepository()
+    }
 }
