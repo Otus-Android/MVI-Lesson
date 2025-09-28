@@ -83,6 +83,10 @@ dependencies {
   implementation libs.mvikotlin.main
   implementation libs.mvikotlin.coroutines
 
+  implementation libs.orbit.core
+  implementation libs.orbit.viewmodel
+  implementation libs.orbit.compose
+
   implementation platform(libs.compose.bom)
   implementation libs.activity.compose
   implementation libs.androidx.compose.ui

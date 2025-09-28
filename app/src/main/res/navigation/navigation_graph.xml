@@ -23,6 +23,9 @@
     <action
         android:id="@+id/action_selectFragment_to_MVIKotlinFragment"
         app:destination="@id/MVIKotlinFragment" />
+    <action
+        android:id="@+id/action_selectFragment_to_OrbitMVIFragment"
+        app:destination="@id/OrbitMVIFragment" />
   </fragment>
   <fragment
       android:id="@+id/MVVMFragment"
@@ -44,4 +47,8 @@
       android:id="@+id/MVIKotlinFragment"
       android:name="ru.otus.mvi.presentation.mvikotlin.MVIKotlinFragment"
       android:label="MVIKotlinFragment" />
+  <fragment
+      android:id="@+id/OrbitMVIFragment"
+      android:name="ru.otus.mvi.presentation.orbitmvi.OrbitMVIFragment"
+      android:label="OrbitMVIFragment" />
 </navigation>

@@ -44,6 +44,10 @@ class SelectFragment: Fragment() {
         binding.buttonMVIKotlin.setOnClickListener {
             findNavController().navigate(R.id.action_selectFragment_to_MVIKotlinFragment)
         }
+
+        binding.buttonOrbitMVI.setOnClickListener {
+            findNavController().navigate(R.id.action_selectFragment_to_OrbitMVIFragment)
+        }
     }
 
     override fun onDestroyView() {
