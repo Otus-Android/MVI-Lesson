@@ -44,9 +44,20 @@
       android:layout_width="200dp"
       android:layout_height="wrap_content"
       android:text="MVI MVICore"
+      app:layout_constraintBottom_toTopOf="@+id/buttonMVIKotlin"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/buttonRoxie"
+      />
+
+  <Button
+      android:id="@+id/buttonMVIKotlin"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:text="MVI MVIKotlin"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/buttonMVICore"
       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

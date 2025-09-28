@@ -69,4 +69,8 @@ dependencies {
   implementation libs.mvicore.android
   implementation libs.mvicore.binder
   implementation libs.mvicore.diff
+
+  implementation libs.mvikotlin
+  implementation libs.mvikotlin.main
+  implementation libs.mvikotlin.coroutines
 }

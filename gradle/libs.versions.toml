@@ -33,6 +33,7 @@ rxandroid = "2.1.1"
 retrofit-adapter-rxjava2 = "3.0.0"
 roxie = "0.5.0"
 mvicore = "1.2.6"
+mvikotlin = "4.3.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -74,6 +75,9 @@ mvicore = { group = "com.github.badoo.mvicore", name = "mvicore", version.ref = 
 mvicore-android = { group = "com.github.badoo.mvicore", name = "mvicore-android", version.ref = "mvicore" }
 mvicore-binder = { group = "com.github.badoo.mvicore", name = "binder", version.ref = "mvicore" }
 mvicore-diff = { group = "com.github.badoo.mvicore", name = "mvicore-diff", version.ref = "mvicore" }
+mvikotlin = { group = "com.arkivanov.mvikotlin", name = "mvikotlin", version.ref = "mvikotlin" }
+mvikotlin-main = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-main", version.ref = "mvikotlin" }
+mvikotlin-coroutines = { group = "com.arkivanov.mvikotlin", name = "mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
 
 [bundles]
 network = ["okhttp", "okhttp-logging-interceptor", "retrofit", "retrofit-converter-gson"]

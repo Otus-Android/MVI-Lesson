@@ -20,6 +20,9 @@
     <action
         android:id="@+id/action_selectFragment_to_MVICoreFragment"
         app:destination="@id/MVICoreFragment" />
+    <action
+        android:id="@+id/action_selectFragment_to_MVIKotlinFragment"
+        app:destination="@id/MVIKotlinFragment" />
   </fragment>
   <fragment
       android:id="@+id/MVVMFragment"
@@ -37,4 +40,8 @@
       android:id="@+id/MVICoreFragment"
       android:name="ru.otus.mvi.presentation.mvicore.MVICoreFragment"
       android:label="MVICoreFragment" />
+  <fragment
+      android:id="@+id/MVIKotlinFragment"
+      android:name="ru.otus.mvi.presentation.mvikotlin.MVIKotlinFragment"
+      android:label="MVIKotlinFragment" />
 </navigation>
