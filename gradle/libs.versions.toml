@@ -26,6 +26,7 @@ compose-bom = "2025.09.01"
 activity-compose = "1.11.0"
 navigation-compose = "2.9.5"
 coil-compose = "2.7.0"
+accompanist-swiperefresh = "0.32.0"
 lifecycle-extensions = "2.2.0"
 activity-ktx = "1.11.0"
 rxjava = "2.2.21"
@@ -65,6 +66,11 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil-compose" }
+accompanist-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "accompanist-swiperefresh" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycle-extensions" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity-ktx" }
 rxjava = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava" }

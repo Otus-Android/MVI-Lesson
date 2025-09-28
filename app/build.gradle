@@ -1,3 +1,7 @@
+plugins {
+    alias(libs.plugins.composeCompiler)
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
@@ -32,6 +36,11 @@ android {
 
   buildFeatures {
     viewBinding true
+    compose true
+  }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion libs.versions.compose.bom.get()
   }
 }
 
@@ -73,4 +82,13 @@ dependencies {
   implementation libs.mvikotlin
   implementation libs.mvikotlin.main
   implementation libs.mvikotlin.coroutines
+
+  implementation platform(libs.compose.bom)
+  implementation libs.activity.compose
+  implementation libs.androidx.compose.ui
+  implementation libs.androidx.compose.ui.graphics
+  implementation libs.androidx.compose.ui.tooling.preview
+  implementation libs.androidx.compose.material3
+  implementation libs.androidx.compose.foundation
+  implementation libs.coil.compose
 }
