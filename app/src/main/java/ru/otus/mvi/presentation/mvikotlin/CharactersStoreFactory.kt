@@ -31,6 +31,7 @@ internal class CharactersStoreFactory(
     private sealed interface Msg {
         data object Loading : Msg
         data class CharactersLoaded(val characters: List<RaMCharacter>) : Msg
+        data object LoadingFinished : Msg
     }
 
     private inner class BootstrapperImpl : CoroutineBootstrapper<Action>() {
@@ -62,6 +63,7 @@ internal class CharactersStoreFactory(
                         dispatch(Msg.CharactersLoaded(characters))
                     }
                     .onFailure { throwable ->
+                        dispatch(Msg.LoadingFinished)
                         publish(CharactersStore.Label.ErrorLoadingCharacters(throwable))
                     }
             }
@@ -76,6 +78,7 @@ internal class CharactersStoreFactory(
                     characters = msg.characters,
                     isLoading = false
                 )
+                Msg.LoadingFinished -> copy(isLoading = false)
             }
     }
 }
