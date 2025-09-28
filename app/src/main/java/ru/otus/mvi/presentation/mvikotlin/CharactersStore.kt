@@ -3,7 +3,7 @@ package ru.otus.mvi.presentation.mvikotlin
 import com.arkivanov.mvikotlin.core.store.Store
 import ru.otus.mvi.domain.RaMCharacter
 
-interface CharactersStore : Store<CharactersStore.Intent, CharactersStore.State, Nothing> {
+interface CharactersStore : Store<CharactersStore.Intent, CharactersStore.State, CharactersStore.Label> {
 
     sealed interface Intent {
         data object LoadCharacters : Intent
@@ -12,7 +12,10 @@ interface CharactersStore : Store<CharactersStore.Intent, CharactersStore.State,
 
     data class State(
         val characters: List<RaMCharacter> = emptyList(),
-        val isLoading: Boolean = false,
-        val isError: Boolean = false
+        val isLoading: Boolean = false
     )
+
+    sealed interface Label {
+        data class ErrorLoadingCharacters(val throwable: Throwable) : Label
+    }
 }

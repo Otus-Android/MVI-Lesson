@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import coil.compose.AsyncImage
 import com.arkivanov.mvikotlin.core.store.StoreFactory
+import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.states
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import kotlinx.coroutines.flow.launchIn
@@ -56,14 +57,16 @@ class MVIKotlinFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        store.states
-            .onEach { state ->
-                if (state.isError) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Error while loading data",
-                        Toast.LENGTH_SHORT
-                    ).show()
+        store.labels
+            .onEach { label ->
+                when (label) {
+                    is CharactersStore.Label.ErrorLoadingCharacters -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Error while loading data: ${label.throwable.localizedMessage}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

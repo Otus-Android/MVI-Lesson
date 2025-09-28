@@ -16,7 +16,7 @@ internal class CharactersStoreFactory(
 
     fun create(): CharactersStore =
         object : CharactersStore,
-            Store<CharactersStore.Intent, CharactersStore.State, Nothing> by storeFactory.create(
+            Store<CharactersStore.Intent, CharactersStore.State, CharactersStore.Label> by storeFactory.create(
                 name = "CharactersStore",
                 initialState = CharactersStore.State(),
                 bootstrapper = BootstrapperImpl(),
@@ -31,7 +31,6 @@ internal class CharactersStoreFactory(
     private sealed interface Msg {
         data object Loading : Msg
         data class CharactersLoaded(val characters: List<RaMCharacter>) : Msg
-        data object Error : Msg
     }
 
     private inner class BootstrapperImpl : CoroutineBootstrapper<Action>() {
@@ -41,7 +40,7 @@ internal class CharactersStoreFactory(
     }
 
     private inner class ExecutorImpl :
-        CoroutineExecutor<CharactersStore.Intent, Action, CharactersStore.State, Msg, Nothing>() {
+        CoroutineExecutor<CharactersStore.Intent, Action, CharactersStore.State, Msg, CharactersStore.Label>() {
         override fun executeIntent(intent: CharactersStore.Intent) {
             when (intent) {
                 CharactersStore.Intent.LoadCharacters -> loadCharacters()
@@ -62,8 +61,8 @@ internal class CharactersStoreFactory(
                     .onSuccess { characters ->
                         dispatch(Msg.CharactersLoaded(characters))
                     }
-                    .onFailure {
-                        dispatch(Msg.Error)
+                    .onFailure { throwable ->
+                        publish(CharactersStore.Label.ErrorLoadingCharacters(throwable))
                     }
             }
         }
@@ -72,14 +71,11 @@ internal class CharactersStoreFactory(
     private object ReducerImpl : Reducer<CharactersStore.State, Msg> {
         override fun CharactersStore.State.reduce(msg: Msg): CharactersStore.State =
             when (msg) {
-                Msg.Loading -> copy(isLoading = true, isError = false)
+                Msg.Loading -> copy(isLoading = true)
                 is Msg.CharactersLoaded -> copy(
                     characters = msg.characters,
-                    isLoading = false,
-                    isError = false
+                    isLoading = false
                 )
-
-                Msg.Error -> copy(isLoading = false, isError = true)
             }
     }
 }
