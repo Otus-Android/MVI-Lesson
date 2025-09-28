@@ -4,12 +4,12 @@ apply plugin: 'kotlin-kapt'
 
 android {
   namespace 'ru.otus.mvi'
-  compileSdk 33
+  compileSdk 36
 
   defaultConfig {
     applicationId "ru.otus.mvi"
-    minSdk 25
-    targetSdk 33
+    minSdk 28
+    targetSdk 36
     versionCode 1
     versionName "1.0"
 
@@ -52,8 +52,7 @@ dependencies {
 
   implementation libs.bundles.network
 
-  kapt libs.glide.compiler
-  implementation libs.glide
+  implementation libs.coil
 
   implementation libs.navigation.fragment.ktx
   implementation libs.navigation.ui.ktx
@@ -70,8 +69,4 @@ dependencies {
   implementation libs.mvicore.android
   implementation libs.mvicore.binder
   implementation libs.mvicore.diff
-
-  testImplementation libs.junit
-  androidTestImplementation libs.androidx.test.ext.junit
-  androidTestImplementation libs.espresso.core
 }
