@@ -36,53 +36,42 @@ android {
 }
 
 dependencies {
-  implementation 'androidx.core:core-ktx:1.10.1'
-  implementation 'androidx.appcompat:appcompat:1.6.1'
-  implementation 'com.google.android.material:material:1.9.0'
-  implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+  implementation libs.core.ktx
+  implementation libs.appcompat
+  implementation libs.material
+  implementation libs.constraintlayout
 
-  def lifecycleVersion = "2.2.0"
-  implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
-  implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
-  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-  implementation "androidx.activity:activity-ktx:1.7.2"
+  implementation libs.lifecycle.extensions
+  implementation libs.lifecycle.livedata.ktx
+  implementation libs.lifecycle.viewmodel.ktx
+  implementation libs.activity.ktx
 
-  def fragment_version = "1.5.7"
-  implementation "androidx.fragment:fragment-ktx:$fragment_version"
+  implementation libs.fragment.ktx
 
-  def gsonVersion = '2.10'
-  implementation "com.google.code.gson:gson:$gsonVersion"
+  implementation libs.gson
 
-  def okhttpVersion = '4.10.0'
-  implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-  implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+  implementation libs.bundles.network
 
-  def retrofitVersion = '2.9.0'
-  implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-  implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+  kapt libs.glide.compiler
+  implementation libs.glide
 
-  def glideVersion = "4.13.2"
-  kapt "com.github.bumptech.glide:compiler:$glideVersion"
-  implementation "com.github.bumptech.glide:glide:$glideVersion"
+  implementation libs.navigation.fragment.ktx
+  implementation libs.navigation.ui.ktx
 
-  def nav_version = "2.6.0"
-  implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-  implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+  implementation libs.swipetorefresh
 
-  implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+  implementation libs.retrofit.adapter.rxjava2
+  implementation libs.rxjava
+  implementation libs.rxandroid
 
-  implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-  implementation "io.reactivex.rxjava2:rxjava:2.2.18"
-  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+  implementation libs.roxie
 
-  implementation 'com.ww:roxie:0.5.0'
+  implementation libs.mvicore
+  implementation libs.mvicore.android
+  implementation libs.mvicore.binder
+  implementation libs.mvicore.diff
 
-  implementation 'com.github.badoo.mvicore:mvicore:1.2.6'
-  implementation 'com.github.badoo.mvicore:mvicore-android:1.2.6'
-  implementation 'com.github.badoo.mvicore:binder:1.2.6'
-  implementation 'com.github.badoo.mvicore:mvicore-diff:1.2.6'
-
-  testImplementation 'junit:junit:4.13.2'
-  androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+  testImplementation libs.junit
+  androidTestImplementation libs.androidx.test.ext.junit
+  androidTestImplementation libs.espresso.core
 }
